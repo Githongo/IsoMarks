@@ -56,11 +56,12 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "An error occurred, Please try again in a few minutes...", Toast.LENGTH_LONG).show();
                 }
 
+
                 String emailtx = email.getText().toString();
                 String passwordtx = pword.getText().toString();
                 String type = "Login";
 
-
+                //once the user clicks sign in an instance of class doinbackgroung is created and initialized with the login details
                 DoinBackground doinBackground = new DoinBackground(MainActivity.this);
                 doinBackground.execute(type,emailtx,passwordtx);
 
