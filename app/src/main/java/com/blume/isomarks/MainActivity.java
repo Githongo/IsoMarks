@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -55,6 +56,15 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "An error occurred, Please try again in a few minutes...", Toast.LENGTH_LONG).show();
                 }
 
+                String emailtx = email.getText().toString();
+                String passwordtx = pword.getText().toString();
+                String type = "Login";
+
+
+                DoinBackground doinBackground = new DoinBackground(MainActivity.this);
+                doinBackground.execute(type,emailtx,passwordtx);
+
+
             }
         });
 
@@ -67,4 +77,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
 }
