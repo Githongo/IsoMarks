@@ -1,42 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-tools:context=".MainActivity">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".MainActivity">
 
-
+    <ImageView
+        android:id="@+id/TeacherImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_teaching_svg"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        />
     <TextView
         android:id="@+id/login_banner"
-
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/login_banner"
         android:textSize="20sp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/TeacherImage"
         android:layout_centerHorizontal="true"
         />
 
+<!--
         <EditText
             android:id="@+id/Email"
             android:layout_width="300dp"
             android:layout_height="65dp"
             android:layout_below="@+id/login_banner"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="60dp"
             android:background="@drawable/input_field"
             android:hint="@string/prompt_email"
             android:inputType="textEmailAddress"
             android:ems="10"
             android:autofillHints=""
             tools:targetApi="o" />
+  -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="300dp"
+        android:id="@+id/test"
+        android:layout_height="65dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/login_banner"
+        android:hint="@string/prompt_email"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
 
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/Email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:ems="10"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="300dp"
+        android:id="@+id/test2"
+        android:layout_height="65dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/test"
+        app:endIconMode="password_toggle"
+        android:hint="@string/prompt_password"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:importantForAutofill="no"
+            android:inputType="textPassword"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+<!--
     <EditText
         android:id="@+id/password"
         android:layout_width="300dp"
         android:layout_height="65dp"
-        android:layout_below="@+id/Email"
+        android:layout_below="@+id/test"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:background="@drawable/input_field"
@@ -46,33 +99,24 @@ tools:context=".MainActivity">
         android:inputType="textPassword"
          />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="300dp"
-        android:id="@+id/test"
-        android:layout_height="65dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
+    -->
+    <TextView
+        android:id="@+id/resetPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/password"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-
-        >
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/prompt_email"
-            android:inputType="textEmailAddress"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
-
+        android:layout_below="@+id/test2"
+        android:layout_marginTop="10dp"
+        android:text="@string/forgot_password"
+        android:textColor="@color/colorPrimary"
+        />
     <Button
         android:id="@+id/login"
         android:layout_width="156dp"
         android:layout_height="55dp"
-        android:layout_below="@+id/test"
+        android:layout_below="@+id/resetPassword"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="5dp"
         android:background="@drawable/button"
         android:text="@string/title_activity_login"
         android:textColor="#ffffff"
@@ -90,22 +134,13 @@ tools:context=".MainActivity">
         android:layout_marginTop="88dp"
         android:visibility="gone"
          />
-    <TextView
-        android:id="@+id/resetPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/login"
-        android:layout_marginTop="20dp"
-        android:text="@string/forgot_password"
-        android:textColor="@android:color/holo_blue_dark"
-         />
+
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/resetPassword"
+        android:layout_below="@+id/login"
         android:orientation="horizontal">
     <TextView
         android:id="@+id/textView3"
@@ -120,7 +155,7 @@ tools:context=".MainActivity">
         android:id="@+id/register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/sign_up"
+        android:text="@string/Sign_up"
         android:textColor="@color/colorPrimary"
         android:textSize="15sp"
          />

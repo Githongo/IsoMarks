@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText email, pword;
+    com.google.android.material.textfield.TextInputEditText email, pword;
     Button signin;
     TextView pwordreset, signup;
     ProgressBar progressBar;
