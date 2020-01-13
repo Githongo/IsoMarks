@@ -2,6 +2,7 @@ package com.blume.isomarks;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,7 +12,7 @@ import android.widget.Toast;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    EditText email, pword, username, phone, schoolID;
+    com.google.android.material.textfield.TextInputEditText email, pword, username, phone, schoolID;
     Button signup;
     ProgressBar progressBar;
 
@@ -84,5 +85,12 @@ public class RegisterActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void SignInRedirect(View view) {
+                Intent i = new Intent(RegisterActivity.this, MainActivity.class);
+                startActivity(i);
+
+
     }
 }
