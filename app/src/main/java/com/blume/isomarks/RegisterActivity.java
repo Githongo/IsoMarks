@@ -32,55 +32,48 @@ public class RegisterActivity extends AppCompatActivity {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                progressBar.setVisibility(View.VISIBLE);
+                //progressBar.setVisibility(View.VISIBLE);
                 final String u_name = username.getText().toString();
                 final String e_mail = email.getText().toString();
                 final String p_word = pword.getText().toString();
                 String uphone = phone.getText().toString();
-
-
-                final String staff_id= schoolID.getText().toString();
-
+                String u_code = schoolID.getText().toString();
+                int Validator= 1;
 
                 if(e_mail.isEmpty()){
                     email.setError("Fill in email field");
                     email.requestFocus();
+                    Validator=0;
                 }
-                else if(p_word.isEmpty()){
+                if(p_word.isEmpty()){
                     pword.setError("Password field cannot be empty");
                     pword.requestFocus();
+                    Validator=0;
                 }
-                else if(uphone.isEmpty()){
+                if(uphone.isEmpty()){
                     phone.setError("Phone field cannot be empty");
                     phone.requestFocus();
+                    Validator=0;
                 }
-
-                if(!(uphone.isEmpty())){
-                    if(!(uphone.length() == 10)){
+                if(!(uphone.length() == 10)){
                         phone.setError("Phone number must be 10 digits");
                         phone.requestFocus();
+                        Validator=0;
                     }
-                    else {
-                        final int u_phone = Integer.parseInt(uphone);
-                    }
-                }
-                if(!(p_word.isEmpty())){
-                    if(p_word.length() < 6){
+
+                if(p_word.length() < 6){
                         pword.setError("Password must be at least 6 characters");
                         pword.requestFocus();
+                        Validator=0;
                     }
 
-                }
-
-
-                else if (!(p_word.isEmpty() && e_mail.isEmpty())){
-                    progressBar.setVisibility(View.VISIBLE);
+                if (Validator==1){
+                    //progressBar.setVisibility(View.VISIBLE);
 
                     //Put write new user to db code here...use u_name, e_mail, p_word, u_phone, staff_id.
 
-                }
-                else {
-                    Toast.makeText(RegisterActivity.this, "An error ccured, Please try again in a few...", Toast.LENGTH_LONG).show();
+                    RegisterConnector registerConnector = new RegisterConnector(RegisterActivity.this);
+                    registerConnector.execute(u_name,e_mail,p_word,uphone,u_code);
                 }
 
             }
