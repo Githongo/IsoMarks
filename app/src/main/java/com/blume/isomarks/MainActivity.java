@@ -4,10 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -62,8 +60,8 @@ public class MainActivity extends AppCompatActivity {
                 String type = "Login";
 
                 //once the user clicks sign in an instance of class doinbackgroung is created and initialized with the login details
-                DoinBackground doinBackground = new DoinBackground(MainActivity.this);
-                doinBackground.execute(type,emailtx,passwordtx);
+                LoginConnector loginConnector = new LoginConnector(MainActivity.this);
+                loginConnector.execute(type,emailtx,passwordtx);
 
 
             }
