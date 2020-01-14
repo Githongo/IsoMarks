@@ -90,7 +90,6 @@ public class RegisterActivity extends AppCompatActivity {
     public void SignInRedirect(View view) {
                 Intent i = new Intent(RegisterActivity.this, MainActivity.class);
                 startActivity(i);
-                overridePendingTransition(R.anim.anim_right_to_left,R.anim.anim_left_to_right);
 
     }
 }
