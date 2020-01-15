@@ -48,20 +48,19 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 else if (!(p_word.isEmpty() && e_mail.isEmpty())){
-                    // Put authentication code here.
+                    progressBar.setVisibility(View.VISIBLE);
+                    String emailtx = email.getText().toString();
+                    String passwordtx = pword.getText().toString();
+                    String type = "Login";
+
+                    //once the user clicks sign in an instance of class doinbackgroung is created and initialized with the login details
+                    LoginConnector loginConnector = new LoginConnector(MainActivity.this);
+                    loginConnector.execute(type,emailtx,passwordtx);
+
                 }
                 else {
                     Toast.makeText(MainActivity.this, "An error occurred, Please try again in a few minutes...", Toast.LENGTH_LONG).show();
                 }
-
-
-                String emailtx = email.getText().toString();
-                String passwordtx = pword.getText().toString();
-                String type = "Login";
-
-                //once the user clicks sign in an instance of class doinbackgroung is created and initialized with the login details
-                LoginConnector loginConnector = new LoginConnector(MainActivity.this);
-                loginConnector.execute(type,emailtx,passwordtx);
 
 
             }
