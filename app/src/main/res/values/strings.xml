@@ -15,9 +15,7 @@
     <string name="Sign_up">Sign up</string>
     <string name="already_have_an_account">Already have an account?</string>
     <string name="sign_in">Sign in</string>
-    <string-array name="institutions">
-        <item>School A</item>
-        <item>School B</item>
-        <item>School C</item>
-    </string-array>
+    <string name="action_logout">Logout</string>
+    <string name="action_settings">Settings</string>
+
 </resources>

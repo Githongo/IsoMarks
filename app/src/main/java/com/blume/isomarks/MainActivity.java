@@ -29,6 +29,11 @@ public class MainActivity extends AppCompatActivity {
         pwordreset = findViewById(R.id.resetPassword);
         progressBar = findViewById(R.id.progressBar1);
 
+        if(1 == 1){
+            Intent toHome = new Intent(MainActivity.this, HomeActivity.class);
+            startActivity(toHome);
+        }
+
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
