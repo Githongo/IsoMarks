@@ -49,24 +49,7 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!--
-    <EditText
-        android:id="@+id/username"
-        android:layout_width="300dp"
-        android:layout_height="65dp"
-        android:autofillHints=""
-        android:background="@drawable/input_field"
-        android:ems="10"
-        android:hint="@string/username"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.144"
-        tools:targetApi="o" />
--->
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="300dp"
@@ -88,21 +71,6 @@
             android:ems="10"
             />
     </com.google.android.material.textfield.TextInputLayout>
-   <!--
-    <EditText
-        android:id="@+id/regEmail"
-        android:layout_width="300dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="13dp"
-        android:layout_marginBottom="16dp"
-        android:autofillHints=""
-        android:background="@drawable/input_field"
-        android:ems="10"
-        android:hint="@string/prompt_email"
-        android:inputType="textEmailAddress"
-
-        tools:targetApi="o" />
-    -->
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="300dp"
@@ -164,25 +132,7 @@
             />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!--
-    <EditText
-        android:id="@+id/schoolID"
-        android:layout_width="300dp"
-        android:layout_height="65dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
-        android:background="@drawable/input_field"
-        android:ems="10"
-        android:hint="@string/sch_id"
-        android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.648"
-        android:autofillHints="" tools:targetApi="o"/>
-    -->
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="300dp"
@@ -206,25 +156,6 @@
             />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!--
-    <EditText
-        android:id="@+id/regPassword"
-        android:layout_width="300dp"
-        android:layout_height="65dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
-        android:background="@drawable/input_field"
-        android:ems="10"
-        android:hint="@string/prompt_password"
-        android:importantForAutofill="no"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.524" />
--->
 
     <Button
         android:id="@+id/regButton"

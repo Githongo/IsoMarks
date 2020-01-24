@@ -22,18 +22,34 @@
         app:menu="@menu/actionbar_menu"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-    <androidx.core.widget.NestedScrollView
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <androidx.recyclerview.widget.RecyclerView
+        android:layout_height="wrap_content"
+        android:padding="3dp"
+        >
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:text="Adm. no."/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:text="Name"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Marks(%)"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <ListView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/subjectRecyclerView"
-            android:scrollbars="vertical"
-            >
-        </androidx.recyclerview.widget.RecyclerView>
+            android:id="@+id/editListView"
+            ></ListView>
 
-    </androidx.core.widget.NestedScrollView>
 
 
 
