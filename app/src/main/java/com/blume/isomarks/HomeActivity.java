@@ -27,7 +27,8 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        Toolbar myToolbar = findViewById(R.id.my_toolbar);
+        //initializing toolbar (Appbar)
+        Toolbar myToolbar = findViewById(R.id.home_toolbar);
         setSupportActionBar(myToolbar);
         setTitle("Subjects");
 

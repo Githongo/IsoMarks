@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/editmarks_menu_sort_a_to_z"
+        android:title="@string/action_sort_a_to_z"
+        app:showAsAction="never"/>
+    <item android:id="@+id/editmarks_menu_sort_by_admno"
+        android:title="@string/action_sort_by_admno"
+        app:showAsAction="never"/>
+
+</menu>

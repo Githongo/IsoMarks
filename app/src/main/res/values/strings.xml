@@ -17,5 +17,7 @@
     <string name="sign_in">Sign in</string>
     <string name="action_logout">Logout</string>
     <string name="action_settings">Settings</string>
+    <string name="action_sort_a_to_z">Sort (A to Z)</string>
+    <string name="action_sort_by_admno">Sort by Adm. no.</string>
 
 </resources>
