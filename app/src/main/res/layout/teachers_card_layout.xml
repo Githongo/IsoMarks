@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="5dp"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            >
+        <TextView
+            android:id="@+id/TeacherName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:text="Teacher name"
+            android:textColor="@android:color/background_dark"
+            android:textStyle="bold"
+            />
+            <LinearLayout
+                android:id="@+id/Subject1Tag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@+id/TeacherName"
+                >
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginStart="5dp"
+             android:text="Subject 1:"
+             android:textSize="20sp"
+             android:layout_marginEnd="10dp"
+             />
+          <TextView
+              android:id="@+id/Subject1Name"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textSize="20sp"
+              android:textColor="@android:color/background_dark"
+              android:layout_marginLeft="5dp"
+              />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/Subject2Tag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@+id/Subject1Tag"
+                >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="Subject 2:"
+                android:textSize="20sp"
+                android:layout_marginEnd="10dp"
+                />
+            <TextView
+                android:id="@+id/Subject2Name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@android:color/background_dark"
+                android:layout_marginLeft="5dp"
+
+                />
+            </LinearLayout>
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+</LinearLayout>
