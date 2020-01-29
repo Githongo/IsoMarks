@@ -1,49 +1,69 @@
 package com.blume.isomarks;
 
 import android.content.Context;
-import android.graphics.ColorSpace;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
-import com.blume.isomarks.model.TeachersModel;
 
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class TeacherAdapter extends RecyclerView.Adapter<TeacherViewHolder> {
+public class TeacherAdapter extends RecyclerView.Adapter<TeacherAdapter.ViewHolder>{
 
-    Context c;
-    ArrayList<TeachersModel> models;
+    Context mContext;
+    private ArrayList<String> mTeacherNames;
+    private ArrayList<String> mSub1;
+    private ArrayList<String> mSub2;
 
-    public TeacherAdapter(Context c, ArrayList<TeachersModel> models) {
-        this.c = c;
-        this.models = models;
+    public TeacherAdapter(Context mContext, ArrayList<String> mTeacherNames, ArrayList<String> mSub1, ArrayList<String> mSub2) {
+        this.mContext = mContext;
+        this.mTeacherNames = mTeacherNames;
+        this.mSub1 = mSub1;
+        this.mSub2 = mSub2;
     }
 
     @NonNull
     @Override
-    public TeacherViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.teachers_card_layout,parent,false);
+        ViewHolder holder = new ViewHolder(view);
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.teachers_card_layout,null);
-
-        return new TeacherViewHolder(view);
+        return holder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull TeacherViewHolder holder, int i) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Log.d("secondtry","onBindViewHolder called");
 
-        holder.TeacherName.setText(models.get(i).getTeacherName());
-        holder.Subject1.setText(models.get(i).getSubject1());
-        holder.Subject2.setText(models.get(i).getSubject2());
-
+        holder.TeacherNam.setText(mTeacherNames.get(position));
+        holder.Sub1.setText(mSub1.get(position));
+        holder.Sub2.setText(mSub2.get(position));
 
     }
 
     @Override
     public int getItemCount() {
-        return models.size();
+        Log.d("listSize",Integer.toString(mTeacherNames.size()));
+
+        return mTeacherNames.size();
+    }
+
+    public class ViewHolder extends  RecyclerView.ViewHolder{
+
+        TextView TeacherNam,Sub1,Sub2;
+
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+
+            TeacherNam = itemView.findViewById(R.id.TeacherName);
+            Sub1 = itemView.findViewById(R.id.Subject1Name);
+            Sub2 = itemView.findViewById(R.id.Subject2Name);
+        }
     }
 }
+
