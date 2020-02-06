@@ -40,7 +40,7 @@ public class TeacherAdapter extends RecyclerView.Adapter<TeacherAdapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Log.d("secondtry","onBindViewHolder called");
 
-        holder.TeacherNam.setText(mTeacherNames.get(position));
+        holder.TeacherNam.setTitle(mTeacherNames.get(position));
         holder.Sub1.setText(mSub1.get(position));
         holder.Sub2.setText(mSub2.get(position));
 
@@ -55,14 +55,15 @@ public class TeacherAdapter extends RecyclerView.Adapter<TeacherAdapter.ViewHold
 
     public class ViewHolder extends  RecyclerView.ViewHolder{
 
-        TextView TeacherNam,Sub1,Sub2;
+        com.alespero.expandablecardview.ExpandableCardView TeacherNam;
+        TextView Sub1,Sub2;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            TeacherNam = itemView.findViewById(R.id.TeacherName);
-            Sub1 = itemView.findViewById(R.id.Subject1Name);
-            Sub2 = itemView.findViewById(R.id.Subject2Name);
+            TeacherNam = itemView.findViewById(R.id.testcard);
+            Sub1 = itemView.findViewById(R.id.number);
+            Sub2 = itemView.findViewById(R.id.email);
         }
     }
 }

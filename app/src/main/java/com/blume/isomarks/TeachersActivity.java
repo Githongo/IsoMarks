@@ -2,6 +2,9 @@ package com.blume.isomarks;
 
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -26,17 +29,30 @@ public class TeachersActivity extends AppCompatActivity {
     private ArrayList<String> mTeacherNames = new ArrayList<>();
     private ArrayList<String> mSub1 = new ArrayList<>();
     private ArrayList<String> mSub2 = new ArrayList<>();
-
+    ProgressBar mprogressBar;
     private static final String TAG = "TeachersActivity";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_teachers);
-
         mRequestQueue = Volley.newRequestQueue(this);
+        mprogressBar = findViewById(R.id.TeacherlistProgress);
+        VolleyCallback volleyCallback=new VolleyCallback() {
+            @Override
+            public void onSuccess(JSONObject jsonObject) {
+                try {
+                    mTeacherNames.add((String)jsonObject.get("Username"));
+                    mSub1.add("+254"+ jsonObject.get("phoneNo"));
+                    mSub2.add((String)jsonObject.get("Email"));
+                    Log.d("volleyTest",Integer.toString(mTeacherNames.size()));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
 
-        fetchJsonResponse();
+        fetchJsonResponse(volleyCallback);
 
 
 
@@ -52,8 +68,7 @@ public class TeachersActivity extends AppCompatActivity {
 
     }
 
-    private void fetchJsonResponse() {
-
+    private void fetchJsonResponse(final VolleyCallback volleyCallback) {
 
         JsonArrayRequest req = new JsonArrayRequest("http://kilishi.co.ke/Android_list_teachers.php", new Response.Listener<JSONArray>() {
             @Override
@@ -64,18 +79,16 @@ public class TeachersActivity extends AppCompatActivity {
                         JSONObject jsonObject = response.getJSONObject(i);
 
 
-                        mTeacherNames.add((String)jsonObject.get("Username"));
-                        mSub1.add("+254"+ jsonObject.get("phoneNo"));
-                        mSub2.add((String)jsonObject.get("Email"));
 
 
+                    volleyCallback.onSuccess(jsonObject);
 
                     }catch (JSONException e){
                     }
                 }
+
                 initRecyclerView();
-
-
+                mprogressBar.setVisibility(View.GONE);
 
             }
         },
@@ -92,5 +105,9 @@ public class TeachersActivity extends AppCompatActivity {
         mRequestQueue.add(req);
     }
 
+    public interface VolleyCallback{
+
+        void onSuccess(JSONObject jsonObject);
+    }
 
 }

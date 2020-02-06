@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <com.google.android.material.card.MaterialCardView
+    <!--<com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:layout_margin="10dp"
@@ -76,6 +76,27 @@
                 />
             </LinearLayout>
         </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>-->
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="5dp"
+        >
+    <com.alespero.expandablecardview.ExpandableCardView
+        android:id="@+id/testcard"
+        app:title="hello"
+        app:icon="@drawable/ic_account_circle_black_24dp"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        app:inner_view="@layout/inner_view"
+        app:expandOnClick="true"
+        app:startExpanded="false"
+        app:animationDuration="300"
+        android:layout_margin="5dp"
+        >
+    </com.alespero.expandablecardview.ExpandableCardView>
     </com.google.android.material.card.MaterialCardView>
 
 

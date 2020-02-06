@@ -16,6 +16,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.Objects;
 
 public class LoginConnector extends AsyncTask<String, Void, String> {
      Context context;
@@ -96,7 +97,11 @@ public class LoginConnector extends AsyncTask<String, Void, String> {
     private void DbLoginUser(String result){
         AlertDialog alertDialog = new AlertDialog.Builder(context).create();
         alertDialog.setTitle("Login Status");
-        if (result.equals("Admin")){
+        if(result==null){
+            alertDialog.setMessage("connection timed-out");
+            alertDialog.show();
+        }
+        else if (result.equals("Admin")){
             Starter();
         }
         else if(result.equals("Success")){
