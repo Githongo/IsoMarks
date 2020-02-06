@@ -231,6 +231,7 @@
         android:layout_width="156dp"
         android:layout_height="55dp"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
         android:layout_below="@+id/PasswordHolder"
         android:text="@string/sign_up"
         android:textColor="#ffffff"
@@ -253,6 +254,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
         android:layout_below="@+id/regButton"
         android:orientation="horizontal">
         <TextView

@@ -62,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
                 //once the user clicks sign in an instance of class doinbackgroung is created and initialized with the login details
                 LoginConnector loginConnector = new LoginConnector(MainActivity.this);
                 loginConnector.execute(type,emailtx,passwordtx);
+                /*Intent i = new Intent(MainActivity.this, landing_admin.class);
+                startActivity(i);*/
 
 
             }
@@ -79,4 +81,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    /*public void Starter(){
+        Intent i = new Intent(MainActivity.this, landing_admin.class);
+        startActivity(i);
+    }*/
 }

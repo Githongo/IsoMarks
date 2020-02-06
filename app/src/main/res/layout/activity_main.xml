@@ -45,7 +45,7 @@
         android:id="@+id/test"
         android:layout_height="65dp"
         android:layout_marginTop="60dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="5dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/login_banner"
         android:hint="@string/prompt_email"
@@ -139,6 +139,7 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/login"
         android:orientation="horizontal">
