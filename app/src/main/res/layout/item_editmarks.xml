@@ -10,32 +10,27 @@
         android:padding="5dp">
 
         <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1.0"
-            android:layout_height="wrap_content"
-            android:textColor="#000"
-            android:padding="10sp"
-            android:text="12345"/>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1.0"
-            android:layout_height="wrap_content"
-            android:textColor="#000"
-            android:padding="10sp"
-            android:text="Anonymous,"/>
-        <TextView
+            android:id="@+id/adm_no"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#000"
             android:padding="10sp"
-            android:text="John"/>
+            android:text="12345"
+            android:textColor="#000" />
+
         <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1.0"
+            android:id="@+id/nameText"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#000"
+            android:layout_marginLeft="30sp"
             android:padding="10sp"
-            android:text="Doe"/>
+            android:text="Anonymous, John Doe"
+            android:textColor="#000" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
 
         <EditText
             android:id="@+id/editid"

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.blume.isomarks.R;
 
@@ -59,6 +60,8 @@ public class EditAdapter extends BaseAdapter {
             convertView = inflater.inflate(R.layout.item_editmarks, null, true);
 
             holder.editText = (EditText) convertView.findViewById(R.id.editid);
+            holder.admTextView = (TextView) convertView.findViewById(R.id.adm_no);
+            holder.nameTextView = (TextView) convertView.findViewById(R.id.nameText);
 
             convertView.setTag(holder);
         }else {
@@ -67,6 +70,8 @@ public class EditAdapter extends BaseAdapter {
         }
 
         holder.editText.setText(editModelArrayList.get(position).getEditTextValue());
+        holder.admTextView.setText(editModelArrayList.get(position).getAdmTextValue());
+        holder.nameTextView.setText(editModelArrayList.get(position).getNameTextValue());
 
         holder.editText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -92,6 +97,8 @@ public class EditAdapter extends BaseAdapter {
 
     private class ViewHolder {
 
+        public TextView admTextView;
+        public TextView nameTextView;
         protected EditText editText;
 
     }
