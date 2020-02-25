@@ -4,12 +4,10 @@
 
     <item android:id="@+id/editmarks_menu_save"
         android:icon="@drawable/ic_save_black_24dp"
-        app:showAsAction="ifRoom"/>
-    <item android:id="@+id/editmarks_menu_sort_a_to_z"
-        android:title="@string/action_sort_a_to_z"
-        app:showAsAction="never"/>
-    <item android:id="@+id/editmarks_menu_sort_by_admno"
-        android:title="@string/action_sort_by_admno"
+        app:showAsAction="ifRoom"
+        android:title="Save" />
+    <item android:id="@+id/editmarks_menu_help"
+        android:title="@string/help"
         app:showAsAction="never"/>
 
 </menu>
