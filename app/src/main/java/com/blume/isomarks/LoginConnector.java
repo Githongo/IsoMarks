@@ -4,7 +4,10 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.util.Log;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -18,8 +21,11 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Objects;
 
+
 public class LoginConnector extends AsyncTask<String, Void, String> {
-     Context context;
+    Context context;
+    AlertDialog alertDialog;
+    ProgressBar progressBar1;
 
     LoginConnector(Context ctx){
         context = ctx;
