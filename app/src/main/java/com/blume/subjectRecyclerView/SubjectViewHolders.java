@@ -34,6 +34,8 @@ public class SubjectViewHolders extends RecyclerView.ViewHolder implements View.
         Intent intent = new Intent(v.getContext(), EditmarksActivity.class);
         Bundle b = new Bundle();
         b.putString("subjectId", subjectId.getText().toString());
+        b.putString("subjectName", subjectName.getText().toString());
+        b.putString("stream", stream.getText().toString());
         intent.putExtras(b);
         v.getContext().startActivity(intent);
     }
