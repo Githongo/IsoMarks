@@ -2,11 +2,12 @@ package com.blume.isomarks;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -18,12 +19,13 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.Objects;
+
 
 public class LoginConnector extends AsyncTask<String, Void, String> {
     Context context;
     AlertDialog alertDialog;
     ProgressBar progressBar1;
-
 
     LoginConnector(Context ctx){
         context = ctx;
@@ -83,21 +85,47 @@ public class LoginConnector extends AsyncTask<String, Void, String> {
     @Override
     protected void onPreExecute() {
 
-        //we create the dialog title before the code excutes
-        alertDialog = new AlertDialog.Builder(context).create();
-        alertDialog.setTitle("Login Status");
+
     }
 
     @Override
     protected void onPostExecute(String result) {
         //the messages retrieved here is from the database (to be replaced with values we want)
-        alertDialog.setMessage(result);
-        alertDialog.show();
 
+        DbLoginUser(result);
     }
 
     @Override
     protected void onProgressUpdate(Void... values) {
         super.onProgressUpdate(values);
+    }
+
+    private void DbLoginUser(String result){
+        AlertDialog alertDialog = new AlertDialog.Builder(context).create();
+        alertDialog.setTitle("Login Status");
+        if(result==null){
+            alertDialog.setMessage("connection timed-out");
+            alertDialog.show();
+        }
+        else if (result.equals("Admin")){
+            Starter();
+        }
+        else if(result.equals("Success")){
+            //add the intent to users page here
+            alertDialog.setMessage(result);
+            alertDialog.show();
+        }
+        else{
+            //we create the dialog title before the code excutes
+
+            alertDialog.setMessage(result);
+            alertDialog.show();
+        }
+
+    }
+
+    public void Starter(){
+        Intent i = new Intent(context, landing_admin.class);
+        context.startActivity(i);
     }
 }

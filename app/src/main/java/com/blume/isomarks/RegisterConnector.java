@@ -91,8 +91,14 @@ public class RegisterConnector extends AsyncTask<String,Void,String> {
     @Override
     protected void onPostExecute(String result) {
         //the messages retrieved here is from the database (to be replaced with values we want)
-        alertDialog.setMessage(result);
-        alertDialog.show();
+        if(result==null){
+            alertDialog.setMessage("connection timed-out");
+            alertDialog.show();
+        }
+        else {
+            alertDialog.setMessage(result);
+            alertDialog.show();
+        }
     }
 
     @Override
