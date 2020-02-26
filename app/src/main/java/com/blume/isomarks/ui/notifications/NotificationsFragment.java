@@ -30,6 +30,10 @@ public class NotificationsFragment extends Fragment {
                 textView.setText(s);
             }
         });
+
+        getActivity().setTitle("Notifications");
+
+
         return root;
     }
 }

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="350dp"
+    android:layout_height="475dp"
+    android:background="@color/colorPrimaryDark"
+    android:padding="5dp"
+    android:layout_gravity="center">
+
+
+    <!--<EditText
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:backgroundTint="@android:color/white"
+        android:layout_centerHorizontal="true"
+        />-->
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create Exam"
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/examname"
+        android:layout_below="@+id/title"
+    android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        app:boxBackgroundColor="@color/colorPrimaryDark"
+        android:layout_centerHorizontal="true"
+        app:boxStrokeColor="@android:color/white"
+        android:layout_marginTop="5dp"
+        android:hint="Exam Name"
+        app:hintTextColor="#FFFF"
+
+    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">
+    <com.google.android.material.textfield.TextInputEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        />
+</com.google.android.material.textfield.TextInputLayout>
+
+    <Spinner
+        android:id="@+id/spinner1"
+        android:layout_below="@+id/examname"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/btn_dropdown"
+        android:layout_centerHorizontal="true"
+        android:spinnerMode="dropdown"/>
+
+
+</RelativeLayout>
