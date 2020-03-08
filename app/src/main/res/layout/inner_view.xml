@@ -6,32 +6,8 @@
 
     android:paddingTop="10dp"
     >
-
-<LinearLayout
-    android:id="@+id/phoneholder"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="25dp"
-    android:orientation="horizontal">
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_phone_black_24dp"/>
-
-    <TextView
-        android:id="@+id/number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="4567898765456789"
-        android:textSize="20sp"
-        android:layout_marginLeft="15dp"/>
-
-</LinearLayout>
-
     <LinearLayout
         android:id="@+id/emailholder"
-        android:layout_below="@+id/phoneholder"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="25dp"
         android:layout_width="wrap_content"
@@ -48,10 +24,62 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Pingu@gmail.com"
-            android:textSize="20sp"
+            android:textSize="15sp"
+            android:fontFamily="@font/nunito"
             android:layout_marginLeft="15dp"/>
 
     </LinearLayout>
+    <LinearLayout
+        android:id="@+id/subjectholder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:orientation="horizontal"
+        android:layout_below="@+id/emailholder"
+        >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_subject_black_24dp"/>
+
+        <TextView
+            android:id="@+id/subject"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="English"
+            android:textSize="15sp"
+            android:fontFamily="@font/nunito"
+            android:layout_marginLeft="15dp"/>
+
+    </LinearLayout>
+
+<LinearLayout
+    android:id="@+id/classholder"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="25dp"
+    android:orientation="horizontal"
+    android:layout_below="@+id/subjectholder"
+    >
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_class_black_24dp"/>
+
+    <TextView
+        android:id="@+id/Class"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="4"
+        android:textSize="15sp"
+        android:fontFamily="@font/nunito"
+        android:layout_marginLeft="15dp"/>
+
+</LinearLayout>
+
+
 
 
 </RelativeLayout>

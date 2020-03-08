@@ -18,13 +18,16 @@ public class TeacherAdapter extends RecyclerView.Adapter<TeacherAdapter.ViewHold
     Context mContext;
     private ArrayList<String> mTeacherNames;
     private ArrayList<String> mSub1;
-    private ArrayList<String> mSub2;
+    private ArrayList<String> mEmail;
+    private ArrayList<String> mClass;
 
-    public TeacherAdapter(Context mContext, ArrayList<String> mTeacherNames, ArrayList<String> mSub1, ArrayList<String> mSub2) {
+    public TeacherAdapter(Context mContext, ArrayList<String> mTeacherNames, ArrayList<String> mSub1, ArrayList<String> mEmail
+    ,ArrayList<String> mClass) {
         this.mContext = mContext;
         this.mTeacherNames = mTeacherNames;
         this.mSub1 = mSub1;
-        this.mSub2 = mSub2;
+        this.mEmail = mEmail;
+        this.mClass = mClass;
     }
 
     @NonNull
@@ -42,8 +45,8 @@ public class TeacherAdapter extends RecyclerView.Adapter<TeacherAdapter.ViewHold
 
         holder.TeacherNam.setTitle(mTeacherNames.get(position));
         holder.Sub1.setText(mSub1.get(position));
-        holder.Sub2.setText(mSub2.get(position));
-
+        holder.Email.setText(mEmail.get(position));
+        holder.Class.setText(mClass.get(position));
     }
 
     @Override
@@ -56,14 +59,15 @@ public class TeacherAdapter extends RecyclerView.Adapter<TeacherAdapter.ViewHold
     public class ViewHolder extends  RecyclerView.ViewHolder{
 
         com.alespero.expandablecardview.ExpandableCardView TeacherNam;
-        TextView Sub1,Sub2;
+        TextView Sub1,Email,Class;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             TeacherNam = itemView.findViewById(R.id.testcard);
-            Sub1 = itemView.findViewById(R.id.number);
-            Sub2 = itemView.findViewById(R.id.email);
+            Sub1 = itemView.findViewById(R.id.subject);
+            Email = itemView.findViewById(R.id.email);
+            Class = itemView.findViewById(R.id.Class);
         }
     }
 }

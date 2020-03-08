@@ -69,6 +69,7 @@ public class homeFragment extends Fragment {
                 Fragment fragment = new ExamsFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.setCustomAnimations(R.anim.slide_in_right,R.anim.slide_out_left,R.anim.slide_out_right,R.anim.slide_in_left);
                 fragmentTransaction.replace(R.id.nav_host_fragment,fragment);
                 fragmentTransaction.addToBackStack(null);
                // fragmentTransaction.remove(new homeFragment());
