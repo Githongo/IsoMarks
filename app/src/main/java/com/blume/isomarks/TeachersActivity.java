@@ -28,7 +28,8 @@ public class TeachersActivity extends AppCompatActivity {
 
     private ArrayList<String> mTeacherNames = new ArrayList<>();
     private ArrayList<String> mSub1 = new ArrayList<>();
-    private ArrayList<String> mSub2 = new ArrayList<>();
+    private ArrayList<String> mEmail = new ArrayList<>();
+    private ArrayList<String> mClass = new ArrayList<>();
     ProgressBar mprogressBar;
     private static final String TAG = "TeachersActivity";
 
@@ -43,8 +44,9 @@ public class TeachersActivity extends AppCompatActivity {
             public void onSuccess(JSONObject jsonObject) {
                 try {
                     mTeacherNames.add((String)jsonObject.get("Username"));
-                    mSub1.add("+254"+ jsonObject.get("phoneNo"));
-                    mSub2.add((String)jsonObject.get("Email"));
+                    mSub1.add((String) jsonObject.get("Subject"));
+                    mEmail.add((String)jsonObject.get("Email"));
+                    mClass.add("form "+jsonObject.get("Class"));
                     Log.d("volleyTest",Integer.toString(mTeacherNames.size()));
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -61,7 +63,7 @@ public class TeachersActivity extends AppCompatActivity {
 
     private void initRecyclerView(){
         RecyclerView recyclerView = findViewById(R.id.my_recycler);
-        TeacherAdapter adapter = new TeacherAdapter(this,mTeacherNames,mSub1,mSub2);
+        TeacherAdapter adapter = new TeacherAdapter(this,mTeacherNames,mSub1,mEmail,mClass);
         recyclerView.setAdapter(adapter);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -73,6 +75,9 @@ public class TeachersActivity extends AppCompatActivity {
         JsonArrayRequest req = new JsonArrayRequest("http://kilishi.co.ke/Android_list_teachers.php", new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
+
+                Log.d("response",response.toString());
+
 
                 for (int i = 0; i < response.length();i++){
                     try {

@@ -30,6 +30,9 @@ public class SettingsFragment extends Fragment {
                 textView.setText(s);
             }
         });
+
+        getActivity().setTitle("Settings");
+
         return root;
     }
 }

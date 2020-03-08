@@ -30,6 +30,10 @@ public class AccountFragment extends Fragment {
                 textView.setText(s);
             }
         });
+
+        getActivity().setTitle("Account");
+
+
         return root;
     }
 }

@@ -19,9 +19,9 @@
 
     <fragment
         android:id="@+id/nav_schools"
-        android:name="com.blume.isomarks.ui.schools.SchoolsFragment"
+        android:name="com.blume.isomarks.ui.Exams.ExamsFragment"
         android:label="Schools"
-        tools:layout="@layout/fragment_schools" />
+        tools:layout="@layout/fragment_exams" />
 
     <fragment
         android:id="@+id/nav_notifications"

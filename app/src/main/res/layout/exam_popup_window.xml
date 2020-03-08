@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="350dp"
+    android:layout_height="450dp"
+    android:background="@android:color/transparent"
+    android:padding="5dp"
+    android:layout_gravity="center">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/title"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="4dp"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#F9A7A7"
+            >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create Exam"
+        android:textSize="20sp"
+        android:translationZ="1dp"
+        android:layout_centerHorizontal="true"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        />
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+  <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_marginTop="10dp"
+      android:background="@color/colorPrimaryDark">
+
+
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/examname"
+    android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        app:boxBackgroundColor="@color/colorPrimaryDark"
+        android:layout_centerHorizontal="true"
+        app:boxStrokeColor="@android:color/white"
+        android:layout_marginTop="20dp"
+        android:hint="Exam Name"
+        android:textColorHint="@android:color/white"
+        app:hintTextColor="#FFFF"
+
+    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/examName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        />
+</com.google.android.material.textfield.TextInputLayout>
+
+    <Spinner
+        android:layout_marginTop="5dp"
+        android:id="@+id/examType"
+        android:layout_below="@+id/examname"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:spinnerMode="dropdown"/>
+
+    <Spinner
+        android:layout_marginTop="5dp"
+        android:id="@+id/term"
+        android:layout_below="@+id/examType"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:spinnerMode="dropdown"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/FromHolder"
+        android:layout_below="@+id/term"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        app:boxBackgroundColor="@color/colorPrimaryDark"
+        android:layout_centerHorizontal="true"
+        app:boxStrokeColor="@android:color/white"
+        android:layout_marginTop="5dp"
+        android:hint="From"
+        android:textColorHint="@android:color/white"
+
+        app:hintTextColor="#FFFF"
+
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/FromD"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ToHolder"
+        android:layout_below="@+id/FromHolder"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        app:boxBackgroundColor="@color/colorPrimaryDark"
+        android:layout_centerHorizontal="true"
+        app:boxStrokeColor="@android:color/white"
+        android:layout_marginTop="5dp"
+        android:hint="To"
+        android:textColorHint="@android:color/white"
+
+        app:hintTextColor="#FFFF"
+
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ToD"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/addExam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ToHolder"
+        android:layout_marginTop="35dp"
+        android:layout_centerHorizontal="true"
+        android:text="Add"/>
+
+  </RelativeLayout>
+</RelativeLayout>
