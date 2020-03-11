@@ -17,35 +17,6 @@
         android:background="@color/colorPrimary"
          />
 
-    <!--<com.google.android.material.card.MaterialCardView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="130dp"
-        app:cardElevation="4dp"
-        android:layout_marginStart="30dp"
-        app:cardCornerRadius="6dp"
-        android:backgroundTint="#ffff"
-        >
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        <ImageView
-            android:id="@+id/AddTeachIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:src="@drawable/ic_person_add_black_60dp"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Add teacher"
-            android:textSize="20sp"
-            android:layout_below="@+id/AddTeachIcon"
-            android:layout_centerHorizontal="true"
-            />
-        </RelativeLayout>
-    </com.google.android.material.card.MaterialCardView>-->
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"

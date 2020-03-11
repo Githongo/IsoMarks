@@ -13,13 +13,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".EditmarksActivity"></activity>
+        <activity android:name=".SmsActivity"></activity>
         <activity android:name=".HomeActivity" />
-
+        <activity android:name=".EditmarksActivity" />
+        <activity android:name=".SubjectActivity" />
         <activity
             android:name=".landing_admin"
             android:label="@string/title_activity_landing_admin"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -28,9 +29,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TeachersActivity"
+        <activity
+            android:name=".TeachersActivity"
             android:label="Teachers"
-            android:theme="@style/AppTheme2"></activity>
+            android:theme="@style/AppTheme2" />
     </application>
 
 </manifest>

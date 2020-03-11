@@ -1,40 +1,230 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".HomeActivity"
-    android:fitsSystemWindows="true"
-    android:orientation="vertical"
-    >
-
-
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".HomeActivity">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/home_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
-        android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        android:elevation="40dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:menu="@menu/actionbar_menu"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <androidx.recyclerview.widget.RecyclerView
+        <TextView
+            android:id="@+id/greetingText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/subjectRecyclerView"
-            android:scrollbars="vertical"
+            android:layout_height="150dp"
+            android:textAlignment="center"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:text="Hello"
+            android:textColor="#ffff"
+            android:layout_marginTop="?attr/actionBarSize"
+            android:paddingTop="20dp"
+            android:background="@color/colorPrimaryDark"
+            />
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="125dp"
+            app:cardElevation="0dp"
+            app:cardCornerRadius="30dp"
             >
-        </androidx.recyclerview.widget.RecyclerView>
 
-    </androidx.core.widget.NestedScrollView>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <!--Results card-->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/resultsOption"
+                style="@style/Widget.MaterialComponents.CardView"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="100dp"
+                app:cardElevation="4dp"
+                android:layout_marginStart="30dp"
+                app:cardCornerRadius="6dp"
+                android:backgroundTint="#ffff"
+                >
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/resultsIcon"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_centerInParent="true"
+                        android:backgroundTint="#F9A7A7"
+                        app:cardCornerRadius="24dp"
+                        >
+
+                        <ImageView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+
+                            android:src="@drawable/ic_custom_exam_svg" />
+                    </com.google.android.material.card.MaterialCardView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Results"
+                        android:textSize="15sp"
+                        android:layout_below="@+id/resultsIcon"
+                        android:layout_centerHorizontal="true"
+                        />
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- SMS Card -->
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/smsOption"
+                style="@style/Widget.MaterialComponents.CardView"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="100dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="30dp"
+                app:cardElevation="4dp"
+                app:cardCornerRadius="6dp"
+                android:backgroundTint="#ffff"
+                >
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/smsIcon"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_centerInParent="true"
+                        android:backgroundTint="#B9BEFC"
+                        app:cardCornerRadius="24dp"
+                        >
+
+                        <ImageView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+
+                            android:src="@drawable/ic_sms" />
+                    </com.google.android.material.card.MaterialCardView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="SMS"
+                        android:textSize="15sp"
+                        android:layout_below="@+id/smsIcon"
+                        android:layout_centerHorizontal="true"
+                        />
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Class List Card-->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/classListOption"
+                style="@style/Widget.MaterialComponents.CardView"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="300dp"
+                app:cardElevation="4dp"
+                android:layout_marginStart="30dp"
+                app:cardCornerRadius="6dp"
+                android:backgroundTint="#ffff"
+                >
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/classListIcon"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_centerInParent="true"
+                        android:backgroundTint="#93f783"
+                        app:cardCornerRadius="24dp"
+                        >
+
+                        <ImageView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+
+                            android:src="@drawable/ic_raise_hand" />
+                    </com.google.android.material.card.MaterialCardView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Class Register"
+                        android:textSize="15sp"
+                        android:layout_below="@+id/classListIcon"
+                        android:layout_centerHorizontal="true"
+                        />
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Group maker card -->
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/groupMakerOption"
+                style="@style/Widget.MaterialComponents.CardView"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="300dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="30dp"
+                app:cardElevation="4dp"
+                app:cardCornerRadius="6dp"
+                android:backgroundTint="#ffff"
+                >
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/groupMakerIcon"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_centerInParent="true"
+                        android:backgroundTint="#fcda7c"
+                        app:cardCornerRadius="24dp"
+                        >
+
+                        <ImageView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+
+                            android:src="@drawable/ic_team" />
+                    </com.google.android.material.card.MaterialCardView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Group Maker"
+                        android:textSize="15sp"
+                        android:layout_below="@+id/groupMakerIcon"
+                        android:layout_centerHorizontal="true"
+                        />
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
 
 
 
-</LinearLayout>
+
+    </RelativeLayout>
+
+
+
+</com.google.android.material.card.MaterialCardView>
+
+
+</RelativeLayout>

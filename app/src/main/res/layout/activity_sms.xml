@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SmsActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/home_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="40dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:menu="@menu/actionbar_menu"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    <TextView
+        android:id="@+id/balanceText"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:text="Balance: 20 SMS"
+        android:textColor="#ffff"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:paddingTop="20dp"
+        android:background="@color/colorPrimaryDark"
+        />
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="125dp"
+        app:cardElevation="0dp"
+        app:cardCornerRadius="30dp"
+        >
+
+    <com.google.android.material.chip.ChipGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/contactChipGroup"
+        android:layout_marginTop="60dp"
+        android:paddingTop="10dp"
+        app:singleLine="true"
+        app:singleSelection="true"
+        app:chipSpacingHorizontal="20dp"
+        android:layout_below="@+id/home_toolbar"
+        >
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:layout_marginLeft="15dp"
+            android:textSize="20sp"
+            android:text="Contact:"/>
+        <com.google.android.material.chip.Chip
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/singleContactChip"
+            app:checkedIconEnabled="true"
+            android:checked="true"
+            app:chipCornerRadius="20dp"
+            android:text="Single Contact"/>
+        <com.google.android.material.chip.Chip
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/groupContactsChip"
+            app:checkedIconEnabled="true"
+            app:chipCornerRadius="20dp"
+            android:text="Group Contacts"/>
+
+    </com.google.android.material.chip.ChipGroup>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="150dp"
+            android:text="Recipient"
+            />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="300dp"
+            android:id="@+id/phoneHolder"
+            android:layout_height="65dp"
+            android:layout_marginTop="180dp"
+            android:visibility="visible"
+            android:layout_centerHorizontal="true"
+            android:hint="@string/_0712345678"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:importantForAutofill="no"
+                android:inputType="phone"
+                android:ems="10"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Spinner
+            android:id="@+id/groupContactsSpinner"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            style="@android:style/Widget.Holo.Light.Spinner"
+            android:layout_marginTop="180dp"
+            android:visibility="invisible"
+            android:layout_centerHorizontal="true"
+            />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="300dp"
+            android:id="@+id/messageHolder"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="300dp"
+            android:layout_centerHorizontal="true"
+            android:hint="Message"
+            app:counterEnabled="true"
+            app:counterMaxLength="160"
+            app:helperText="Type Message"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:importantForAutofill="no"
+                android:inputType="textMultiLine"
+                android:ems="10"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/sendButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/messageHolder"
+            android:layout_alignEnd="@+id/messageHolder"
+            android:layout_marginTop="30dp"
+            android:text="SEND"
+            app:icon="@drawable/ic_send_white_24dp"
+            style="@style/Widget.MaterialComponents.Button.Icon"
+            />
+
+
+
+
+    </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</RelativeLayout>

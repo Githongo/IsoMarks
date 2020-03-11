@@ -3,45 +3,58 @@ package com.blume.isomarks;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.blume.subjectRecyclerView.Subject;
-import com.blume.subjectRecyclerView.SubjectAdapter;
-
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Calendar;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private RecyclerView mSubjectRecyclerView;
-    private RecyclerView.Adapter mSubjectAdapter;
-    private RecyclerView.LayoutManager mSubjectLayoutManager;
+    TextView greetingText;
+    com.google.android.material.card.MaterialCardView resultsCard, smsCard, classlistCard, groupMakerCard;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
         //initializing toolbar (Appbar)
         Toolbar myToolbar = findViewById(R.id.home_toolbar);
         setSupportActionBar(myToolbar);
-        setTitle("Subjects");
+        setTitle("IsoMarks");
 
-        //finding recycler view, setting attr. and creating helper class objects
-        mSubjectRecyclerView = findViewById(R.id.subjectRecyclerView);
-        mSubjectRecyclerView.setNestedScrollingEnabled(false);
-        mSubjectRecyclerView.setHasFixedSize(true);
-        mSubjectLayoutManager = new LinearLayoutManager(HomeActivity.this);
-        mSubjectRecyclerView.setLayoutManager(mSubjectLayoutManager);
-        mSubjectAdapter = new SubjectAdapter(getDataSetSubject(), HomeActivity.this);
-        mSubjectRecyclerView.setAdapter(mSubjectAdapter);
+        //greeting
+        greetingText = findViewById(R.id.greetingText);
+        getGreeting();
+
+        //handling cards
+        resultsCard = findViewById(R.id.resultsOption);
+        smsCard = findViewById(R.id.smsOption);
+        classlistCard = findViewById(R.id.classListOption);
+        groupMakerCard = findViewById(R.id.groupMakerOption);
+
+        resultsCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent toSubjects = new Intent(HomeActivity.this, SubjectActivity.class);
+                startActivity(toSubjects);
+            }
+        });
+
+        smsCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent toSMS = new Intent(HomeActivity.this, SmsActivity.class);
+                startActivity(toSMS);
+            }
+        });
     }
-
 
     //inflating toolbar(appbar) with menu res
     @Override
@@ -70,17 +83,18 @@ public class HomeActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    Subject subobj = new Subject("1234", "Mathematics", "4 D", "Opener", "Editable");
-    Subject subobj2 = new Subject("3456", "English", "4 S", "End Term", "Editable");
+    private void getGreeting(){
+        Calendar c = Calendar.getInstance();
+        int timeOfDay = c.get(Calendar.HOUR_OF_DAY);
 
-    ArrayList resultsSubjects = new ArrayList<Subject>();
-    List<Subject> getDataSetSubject() {
-        return getResultsSubjects();
-    }
-
-    public ArrayList getResultsSubjects() {
-        resultsSubjects.add(subobj);
-        resultsSubjects.add(subobj2);
-        return resultsSubjects;
+        if(timeOfDay < 12){
+            greetingText.setText("Good Morning "+getIntent().getExtras().getString("Name"));
+        }
+        else if(timeOfDay <16){
+            greetingText.setText("Good Afternoon "+getIntent().getExtras().getString("Name"));
+        }
+        else {
+            greetingText.setText("Good Evening "+getIntent().getExtras().getString("Name"));
+        }
     }
 }

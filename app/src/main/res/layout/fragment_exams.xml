@@ -50,7 +50,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:backgroundTint="@android:color/white"
-                    android:src="@drawable/ic_add_circle_64dp" />
+                    android:src="@drawable/ic_help_24px" />
 
             </RelativeLayout>
 

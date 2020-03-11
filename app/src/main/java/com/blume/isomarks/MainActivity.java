@@ -31,6 +31,10 @@ public class MainActivity extends AppCompatActivity {
 
         if(1 == 1){
             Intent toHome = new Intent(MainActivity.this, HomeActivity.class);
+            Bundle b = new Bundle();
+            b.putString("Name", "John");
+            toHome.putExtras(b);
+
             startActivity(toHome);
         }
 
