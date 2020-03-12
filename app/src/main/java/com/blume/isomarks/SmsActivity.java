@@ -11,19 +11,36 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.blume.edithelpers.EditAdapter;
 import com.google.android.material.chip.ChipGroup;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SmsActivity extends AppCompatActivity {
 
-    com.google.android.material.textfield.TextInputEditText phone;
+    com.google.android.material.textfield.TextInputEditText phone, message;
     com.google.android.material.textfield.TextInputLayout phoneTextLayout;
     Spinner groupContactsSpinner;
+    Button sendBtn;
+    String sendSms_url = "https://isomarks.co.ke/sendsms";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,6 +104,69 @@ public class SmsActivity extends AppCompatActivity {
                 }
             }
         });
+
+        //send sms
+        phone = findViewById(R.id.phone);
+        message = findViewById(R.id.messageEditText);
+        sendBtn = findViewById(R.id.sendButton);
+
+
+        sendBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                int validator=1;
+                String to = phone.getText().toString();
+                String sms = message.getText().toString();
+                if (!(to.length() == 10)) {
+                    phone.setError("Phone number must be 10 digits");
+                    phone.requestFocus();
+                    validator = 0;
+                }
+                if (sms.isEmpty()) {
+                    message.setError("Message field cannot be empty");
+                    message.requestFocus();
+                    validator = 0;
+                }
+                if(validator == 1){
+                    StringRequest smsRequest = new StringRequest(Request.Method.POST, sendSms_url, new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+                               /* JSONArray smsResponse = new JSONArray(response);
+                                JSONObject responseObj = smsResponse.getJSONObject(1);
+                                String Status = responseObj.getString("status");*/
+
+                                Toast.makeText(SmsActivity.this, "Sent", Toast.LENGTH_LONG).show();
+                            } catch (Exception je) {
+                                Toast.makeText(SmsActivity.this, je.toString(), Toast.LENGTH_LONG).show();
+                            }
+
+                        }
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Toast.makeText(SmsActivity.this, error.toString(), Toast.LENGTH_LONG).show();
+                        }
+                    }) {
+                        @Override
+                        protected Map<String, String> getParams() {
+                            Map<String, String> params = new HashMap<String, String>();
+                            params.put("singleContact", phone.getText().toString());
+                            params.put("message", message.getText().toString());
+
+                            return params;
+                        }
+
+                    };
+
+                    RequestQueue requestQueue = Volley.newRequestQueue(SmsActivity.this);
+                    requestQueue.add(smsRequest);
+                }
+            }
+        });
+
+
     }
 
     //inflating toolbar(appbar) with menu res

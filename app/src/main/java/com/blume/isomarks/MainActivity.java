@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         pwordreset = findViewById(R.id.resetPassword);
         progressBar = findViewById(R.id.progressBar1);
 
-        if(1 == 1){
+        if(1 == 0){
             Intent toHome = new Intent(MainActivity.this, HomeActivity.class);
             Bundle b = new Bundle();
             b.putString("Name", "John");

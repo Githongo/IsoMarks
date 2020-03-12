@@ -9,15 +9,34 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.blume.edithelpers.EditAdapter;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 public class HomeActivity extends AppCompatActivity {
 
     TextView greetingText;
     com.google.android.material.card.MaterialCardView resultsCard, smsCard, classlistCard, groupMakerCard;
+    String userInfo_url = "http://kilishi.co.ke/Android_get_user.php";
+    JSONArray user;
+    String userName, teacherID;
+    String[] userNameArr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,9 +48,46 @@ public class HomeActivity extends AppCompatActivity {
         setSupportActionBar(myToolbar);
         setTitle("IsoMarks");
 
+        StringRequest userRequest = new StringRequest(Request.Method.POST, userInfo_url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    user = new JSONArray(response);
+                    JSONObject userObj = user.getJSONObject(0);
+                    userName = userObj.getString("name");
+                    userNameArr = userName.trim().split("\\s+");
+                    teacherID = userObj.getString("teacherID");
+
+                    getGreeting();
+                }
+                catch (JSONException je){
+                    Toast.makeText(HomeActivity.this,je.toString(),Toast.LENGTH_LONG).show();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(HomeActivity.this,error.toString(),Toast.LENGTH_LONG).show();
+                error.printStackTrace();
+            }
+        }){
+            @Override
+            protected Map<String,String> getParams(){
+                Map<String,String> params = new HashMap<String, String>();
+                params.put("email", getIntent().getExtras().getString("email"));
+
+                return params;
+            }
+
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(userRequest);
+
         //greeting
         greetingText = findViewById(R.id.greetingText);
-        getGreeting();
+
 
         //handling cards
         resultsCard = findViewById(R.id.resultsOption);
@@ -88,13 +144,13 @@ public class HomeActivity extends AppCompatActivity {
         int timeOfDay = c.get(Calendar.HOUR_OF_DAY);
 
         if(timeOfDay < 12){
-            greetingText.setText("Good Morning "+getIntent().getExtras().getString("Name"));
+            greetingText.setText("Good Morning "+userNameArr[0]);
         }
         else if(timeOfDay <16){
-            greetingText.setText("Good Afternoon "+getIntent().getExtras().getString("Name"));
+            greetingText.setText("Good Afternoon "+userNameArr[0]);
         }
         else {
-            greetingText.setText("Good Evening "+getIntent().getExtras().getString("Name"));
+            greetingText.setText("Good Evening "+userNameArr[0]);
         }
     }
 }

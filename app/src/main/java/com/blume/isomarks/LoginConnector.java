@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
+import android.os.Bundle;
 import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -26,6 +27,7 @@ public class LoginConnector extends AsyncTask<String, Void, String> {
     Context context;
     AlertDialog alertDialog;
     ProgressBar progressBar1;
+    String UserEmail;
 
     LoginConnector(Context ctx){
         context = ctx;
@@ -39,7 +41,7 @@ public class LoginConnector extends AsyncTask<String, Void, String> {
 
             try {
                 //This block of code attaches some POST values to the above url (urlquery)
-                String UserEmail = params[1];
+                UserEmail = params[1];
                 String Pasw = params[2];
                 URL url =  new URL(login_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
@@ -114,14 +116,23 @@ public class LoginConnector extends AsyncTask<String, Void, String> {
             //add the intent to users page here
             alertDialog.setMessage(result);
             alertDialog.show();
+            toHome();
         }
         else{
             //we create the dialog title before the code excutes
-
             alertDialog.setMessage(result);
             alertDialog.show();
         }
 
+    }
+
+    private void toHome() {
+        Intent toHomeActivity = new Intent(context, HomeActivity.class);
+        Bundle b = new Bundle();
+        b.putString("email", UserEmail);
+        toHomeActivity.putExtras(b);
+
+        context.startActivity(toHomeActivity);
     }
 
     public void Starter(){
