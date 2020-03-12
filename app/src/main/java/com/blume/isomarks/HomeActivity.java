@@ -48,6 +48,7 @@ public class HomeActivity extends AppCompatActivity {
         setSupportActionBar(myToolbar);
         setTitle("IsoMarks");
 
+        //Volley request
         StringRequest userRequest = new StringRequest(Request.Method.POST, userInfo_url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -99,6 +100,11 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent toSubjects = new Intent(HomeActivity.this, SubjectActivity.class);
+                Bundle b = new Bundle();
+                b.putString("userName", userName);
+                b.putString("teacherID", teacherID);
+                toSubjects.putExtras(b);
+
                 startActivity(toSubjects);
             }
         });

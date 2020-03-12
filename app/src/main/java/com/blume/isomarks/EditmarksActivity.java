@@ -130,7 +130,7 @@ public class EditmarksActivity extends AppCompatActivity {
                 protected Map<String,String> getParams(){
                     Map<String,String> params = new HashMap<String, String>();
                     params.put("examID", "001");
-                    params.put("subject", "English");
+                    params.put("subject", getIntent().getExtras().getString("subjectName"));
                     String data = new Gson().toJson(editModelArrayList);
                     params.put("results", data);
 

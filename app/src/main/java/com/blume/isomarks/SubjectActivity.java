@@ -11,17 +11,32 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.blume.subjectRecyclerView.Subject;
 import com.blume.subjectRecyclerView.SubjectAdapter;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class SubjectActivity extends AppCompatActivity {
 
     private RecyclerView mSubjectRecyclerView;
     private RecyclerView.Adapter mSubjectAdapter;
     private RecyclerView.LayoutManager mSubjectLayoutManager;
+    JSONArray subjects;
+    String subjectInfo_url = "http://kilishi.co.ke/Android_get_subjects.php";
+    ArrayList<ArrayList<String>> subjectList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,14 +47,49 @@ public class SubjectActivity extends AppCompatActivity {
         setSupportActionBar(myToolbar);
         setTitle("Subjects");
 
-        //finding recycler view, setting attr. and creating helper class objects
-        mSubjectRecyclerView = findViewById(R.id.subjectRecyclerView);
-        mSubjectRecyclerView.setNestedScrollingEnabled(false);
-        mSubjectRecyclerView.setHasFixedSize(true);
-        mSubjectLayoutManager = new LinearLayoutManager(SubjectActivity.this);
-        mSubjectRecyclerView.setLayoutManager(mSubjectLayoutManager);
-        mSubjectAdapter = new SubjectAdapter(getDataSetSubject(), SubjectActivity.this);
-        mSubjectRecyclerView.setAdapter(mSubjectAdapter);
+        //volley Request
+        StringRequest subjectRequest = new StringRequest(Request.Method.POST, subjectInfo_url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    subjects = new JSONArray(response);
+
+                    //finding recycler view, setting attr. and creating helper class objects
+                    mSubjectRecyclerView = findViewById(R.id.subjectRecyclerView);
+                    mSubjectRecyclerView.setNestedScrollingEnabled(false);
+                    mSubjectRecyclerView.setHasFixedSize(true);
+                    mSubjectLayoutManager = new LinearLayoutManager(SubjectActivity.this);
+                    mSubjectRecyclerView.setLayoutManager(mSubjectLayoutManager);
+                    mSubjectAdapter = new SubjectAdapter(getDataSetSubject(), SubjectActivity.this);
+                    mSubjectRecyclerView.setAdapter(mSubjectAdapter);
+
+                }
+                catch (JSONException je){
+                    Toast.makeText(SubjectActivity.this,je.toString(),Toast.LENGTH_LONG).show();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(SubjectActivity.this,error.toString(),Toast.LENGTH_LONG).show();
+                error.printStackTrace();
+            }
+        }){
+            @Override
+            protected Map<String,String> getParams(){
+                Map<String,String> params = new HashMap<String, String>();
+                params.put("teacherID", getIntent().getExtras().getString("teacherID"));
+
+                return params;
+            }
+
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(subjectRequest);
+
+
     }
 
 
@@ -80,8 +130,31 @@ public class SubjectActivity extends AppCompatActivity {
     }
 
     public ArrayList getResultsSubjects() {
-        resultsSubjects.add(subobj);
-        resultsSubjects.add(subobj2);
+        int len = subjects.length();
+        subjectList = new ArrayList<>(len);
+
+        String StreamName, SubjectName;
+
+        for(int i = 0; i < len; i++){
+
+            try {
+                JSONObject subjectsListObj = subjects.getJSONObject(i);
+                StreamName = subjectsListObj.getString("streamClass")+ " "+subjectsListObj.getString("streamName");
+                SubjectName = subjectsListObj.getString("subjectName");
+                Subject subjectObj = new Subject("1234", SubjectName, StreamName, "End Term", "Editable");
+
+                resultsSubjects.add(subjectObj);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+                Toast.makeText(SubjectActivity.this,e.toString(),Toast.LENGTH_LONG).show();
+
+            }
+
+        }
+        //resultsSubjects.add(subobj);
+        //resultsSubjects.add(subobj2);
         return resultsSubjects;
     }
+
 }
