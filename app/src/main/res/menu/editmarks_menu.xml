@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item android:id="@+id/editmarks_menu_save"
-        android:icon="@drawable/ic_save_black_24dp"
+        android:icon="@drawable/ic_save_white_24dp"
         app:showAsAction="ifRoom"
         android:title="Save" />
     <item android:id="@+id/editmarks_menu_help"

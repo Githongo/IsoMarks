@@ -86,6 +86,7 @@ public class EditmarksActivity extends AppCompatActivity {
                 params.put("schoolCode", "100000");
                 params.put("class", "1");
                 params.put("streamNo", "1000005");
+                params.put("subject", getIntent().getExtras().getString("subjectName"));
 
 
                 return params;
@@ -161,7 +162,7 @@ public class EditmarksActivity extends AppCompatActivity {
                 JSONObject studentObj = students.getJSONObject(i);
                 editModel.setAdmTextValue(studentObj.getString("studentID"));
                 editModel.setNameTextValue(studentObj.getString("name"));
-                editModel.setEditTextValue("0");
+                editModel.setEditTextValue(studentObj.getString("mark"));
                 list.add(editModel);
 
 
